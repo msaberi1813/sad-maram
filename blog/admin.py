@@ -1,3 +1,6 @@
 from django.contrib import admin
+from .models import MyUser, Transaction, Message
 
-# Register your models here.
+admin.site.register(MyUser)
+admin.site.register(Transaction)
+admin.site.register(Message)

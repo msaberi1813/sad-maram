@@ -6,7 +6,7 @@ from django.db import models
 from django.contrib.auth.base_user import AbstractBaseUser
 
 class MyUserManager(BaseUserManager):
-    def create_user(self, email,acc_num,  name = "ناشناس", password=None ):
+    def create_user(self, email,acc_num="0",  name = "ناشناس", password=None ):
         if not email:
             raise ValueError('وارد کردن ایمیل ضروری است!')
 
@@ -73,8 +73,8 @@ class Transaction(models.Model):
     date = models.DateTimeField(default=timezone.now())
     type = models.CharField(max_length=30 , null=False , default="");
     status = models.CharField(max_length=30 , null=False , default="در حال انتظار");
-    employee = models.ForeignKey(Employee , on_delete = models.CASCADE ,related_name='asignee')
-    user = models.ForeignKey(MyUser, on_delete=models.CASCADE)
+    employee = models.ForeignKey(Employee , on_delete = models.CASCADE , related_name='karmand')
+    user = models.ForeignKey(MyUser, on_delete=models.CASCADE , related_name='karbar')
     subject =   models.CharField(max_length=30 , null=False , default="موضوع");
     content =  models.CharField(max_length=300 , null=False , default="محتوا");
 
