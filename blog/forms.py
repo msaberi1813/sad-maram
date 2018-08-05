@@ -15,7 +15,6 @@ class NameForm(forms.ModelForm):
         self.fields['password'].label = "رمز عبور"
         self.fields['acc_num'].label = "شماره حساب"
         self.fields['email'].required = True
-        self.fields['password'].required = True
     class Meta:
         model =MyUser
         fields = ['name', 'email', 'password', 'acc_num']
@@ -30,8 +29,29 @@ class NameForm(forms.ModelForm):
             ),
         }
 
+
+class NameForm2(forms.ModelForm):
+
+    class Meta:
+        model =MyUser
+        fields = ['name', 'email',  'acc_num' ]
+        labels ={
+            'email': "ایمیل",
+            'name': "نام و نام خانوادگی",
+            'acc_num': 'شماره حساب',
+
+        }
+
+class ChangePassWordForm(forms.Form):
+    old_pass = forms.CharField(max_length=80, widget=forms.PasswordInput(), label=u"رمز عبور")
+    new_pass = forms.CharField(max_length=80, widget=forms.PasswordInput(), label=u"رمز عبور جديد")
+    repeat_pass = forms.CharField(max_length=80, widget=forms.PasswordInput(), label=u"تکرار رمز عبور جدید")
+
+
+
 class Nform():
-    pass
+    class Meta:
+        pass
 
 class UploadFileForm(forms.Form):
     title = forms.CharField(max_length=50)

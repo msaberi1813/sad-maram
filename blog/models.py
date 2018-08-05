@@ -30,6 +30,9 @@ class MyUserManager(BaseUserManager):
         return user
 
 
+
+
+
 class MyUser(AbstractBaseUser):
     email = models.EmailField(max_length=254, unique=True, db_index=True , null=False , blank=False)
     name = models.CharField(max_length=50 , default="ناشناس" , null=True, blank=True)
@@ -45,6 +48,8 @@ class MyUser(AbstractBaseUser):
 
     USERNAME_FIELD = 'email'
     REQUIRED_FIELDS = []
+
+
 
     def get_full_name(self):
         return self.name

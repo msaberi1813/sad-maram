@@ -5,5 +5,9 @@ urlpatterns = [
     path('', views.home, name='post_list'),
     url(r'^upload_file$', views.upload_file, name='upload_file'),
     url(r'^profile$', views.profile, name='profile'),
+    url(r'^edit$', views.edit, name='edit'),
+    url(r'^ch_pass$', views.bala_pass, name='bala_pass'),
+    url(r'^edit_user_profile$', views.edit_user_profile, name='edit_user_profile'),
+    url(r'^change_pass$', views.change_pass, name='change_pass'),
 
 ]
