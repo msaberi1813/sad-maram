@@ -9,5 +9,7 @@ urlpatterns = [
     url(r'^ch_pass$', views.bala_pass, name='bala_pass'),
     url(r'^edit_user_profile$', views.edit_user_profile, name='edit_user_profile'),
     url(r'^change_pass$', views.change_pass, name='change_pass'),
+    url(r'^bala_add_employee$', views.bala_add_employee, name='bala_add_employee'),
+    url(r'^add_employee$', views.add_employee, name='add_employee'),
 
 ]

@@ -5,9 +5,9 @@ from django.shortcuts import render
 # Create your views here.
 from django.contrib.auth.models import User
 
-from blog.forms import NameForm, NameForm2, Nform, ChangePassWordForm
+from blog.forms import NameForm, NameForm2, Nform, ChangePassWordForm, add_employee2
 # from blog.models import MyUser
-from blog.models import MyUser
+from blog.models import MyUser, Employee
 
 
 def home(request):
@@ -27,6 +27,9 @@ def bala_pass(request):
     f=ChangePassWordForm(request.POST)
     return render (request , 'change_password.html' , {'form':f})
 
+def bala_add_employee(request):
+    f=add_employee2(request.POST , instance=request.user)
+    return render (request , 'add_employee.html' , {'form':f , 'user': request.user})
 
 def upload_file(request):
     form = NameForm(request.POST, request.FILES)
@@ -81,9 +84,19 @@ def change_pass(request):
                 return render(request, 'change_password.html', {})
             else:
                 messages.success(request, 'ورودی های خود را چک کنید')
-
-
     return render(request, 'change_password.html', {'form':form})
 
+def add_employee(request):
+    form = add_employee2(request.POST)
+    if request.method == 'POST':
+        print("hhhhhhhhhhhhhhhhhhhhhhhhh")
+        if form.is_valid():
+            print("yeeeeeeeeeeeeeeeeeeeeeeeees")
+            user = form.save()
+            user.set_password('123456')
+            user.save()
+            messages.success(request, 'ثبت کارمند با موفقیت انجام شد')
+            return render(request, 'add_employee.html', {'user': user, 'form':form})
 
+        return render(request, 'add_employee.html', {'form': form})
 

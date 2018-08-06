@@ -3,7 +3,7 @@ from django.contrib.auth.models import User
 from django.core.exceptions import NON_FIELD_ERRORS, ValidationError
 from django.forms import ModelForm
 
-from blog.models import MyUser
+from blog.models import MyUser, Employee
 
 
 class NameForm(forms.ModelForm):
@@ -47,6 +47,17 @@ class ChangePassWordForm(forms.Form):
     new_pass = forms.CharField(max_length=80, widget=forms.PasswordInput(), label=u"رمز عبور جديد")
     repeat_pass = forms.CharField(max_length=80, widget=forms.PasswordInput(), label=u"تکرار رمز عبور جدید")
 
+
+class add_employee2(forms.ModelForm):
+    class Meta:
+        model =Employee
+        fields = ['name', 'email',  'acc_num' , 'salary' ]
+        labels ={
+            'email': "ایمیل",
+            'name': "نام و نام خانوادگی",
+            'acc_num': 'شماره حساب',
+            'salary': "حقوق",
+        }
 
 
 class Nform():

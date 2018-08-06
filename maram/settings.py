@@ -125,8 +125,6 @@ USE_TZ = True
 
 TIME_ZONE = 'Asia/Tehran'
 
-# AUTH_USER_MODEL = 'blog.MyUser'
-
 AUTHENTICATION_BACKENDS = (
         'django.contrib.auth.backends.RemoteUserBackend',
         'django.contrib.auth.backends.ModelBackend',
