@@ -12,5 +12,8 @@ urlpatterns = [
     url(r'^bala_add_employee$', views.bala_add_employee, name='bala_add_employee'),
     url(r'^add_employee$', views.add_employee, name='add_employee'),
     url(r'^employee_list$', views.employee_list, name='employee_list'),
+    url(r'^(?P<pke>\d+)/empProfile$', views.see_employee_profile, name='see_employee_profile'),
+    url(r'^(?P<pke>\d+)/change_salaryyy$', views.bala_change_employee_salary, name='change_empsalary'),
+    url(r'^(?P<pke>\d+)/change_salary$', views.change_salary, name='change_salary'),
 
 ]

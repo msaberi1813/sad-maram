@@ -5,7 +5,7 @@ from django.shortcuts import render
 # Create your views here.
 from django.contrib.auth.models import User
 
-from blog.forms import NameForm, NameForm2, Nform, ChangePassWordForm, add_employee2
+from blog.forms import NameForm, NameForm2, Nform, ChangePassWordForm, add_employee2, ChangeSalary
 # from blog.models import MyUser
 from blog.models import MyUser, Employee
 
@@ -108,11 +108,30 @@ def employee_list(request):
     return render(request, 'employee_list.html',{'employees':employees} )
 
 def see_employee_profile(request, pke):
-    pass
+    e = Employee.objects.filter(pk = pke).first()
+    return render(request, 'employee_profile.html' , {'e':e})
 
 
-def change_employee_salary(request, pke):
-    pass
+def bala_change_employee_salary(request,pke):
+    form = ChangeSalary(request.POST)
+
+    u = Employee.objects.get(pk=pke)
+
+    return render(request, 'change_employee_salary.html' ,{'form':form , 'e':u} )
+
+def change_salary(request , pke):
+    print("im hereeeeeeeeeeeeeeeeeeeeeeeeee")
+    form = ChangeSalary(request.POST)
+    if request.method == 'POST' :
+        if form.is_valid():
+            u = Employee.objects.get(pk=pke)
+            u.salary = form.data['new_salary']
+            u.save()
+            messages.success(request, 'تغییر حقوق با موفقیت انجام شد')
+            return render(request, 'change_employee_salary.html', {'form':form , 'e':u})
+        else:
+                messages.success(request, 'ورودی های خود را چک کنید')
+    return render(request, 'change_employee_salary.html', {'form':form })
 
 
 def ban_employee(request, pke):

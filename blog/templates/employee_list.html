@@ -101,25 +101,12 @@ opacity: 80%;
 
 
                          <th class="uk-width-auto">
-                        <form method="post" action="{% url 'change_employee_salary' pke=e.pk %}" >
+                        <form method="post" action="{% url 'change_empsalary' pke=e.pk %}" >
                             {% csrf_token %}
                             <input id="submit2" type="submit" class="uk-button" value="تغییر حقوق" />
                         </form>
                         </th>
 
-                         <th class="uk-width-auto">
-                        <form method="post" action="{% url 'ban_employee' pke=e.pk %}" >
-                            {% csrf_token %}
-                            <input id="submit3" type="submit" class="uk-button" value="محدود کردن" />
-                        </form>
-                        </th>
-
-                        <th class="uk-width-auto">
-                        <form method="post" action="{% url 'see_employee_transactions' pke=e.pk %}" >
-                            {% csrf_token %}
-                            <input id="submit4" type="submit" class="uk-button" value="مشاهده تراکنش ها" />
-                        </form>
-                        </th>
 
                     </tr>
 

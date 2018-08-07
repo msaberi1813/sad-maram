@@ -59,6 +59,9 @@ class add_employee2(forms.ModelForm):
             'salary': "حقوق",
         }
 
+class ChangeSalary(forms.Form):
+    new_salary = forms.CharField(max_length=80, widget=forms.NumberInput(), label=u"حقوق جدید")
+
 
 class Nform():
     class Meta:
