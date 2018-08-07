@@ -101,3 +101,22 @@ def add_employee(request):
 
         return render(request, 'add_employee.html', {'form': form})
 
+def employee_list(request):
+    employees = Employee.objects.all()
+    print("fffffffffffffffffffffffffffffffff   ")
+    print(employees)
+    return render(request, 'employee_list.html',{'employees':employees} )
+
+def see_employee_profile(request, pke):
+    pass
+
+
+def change_employee_salary(request, pke):
+    pass
+
+
+def ban_employee(request, pke):
+    pass
+
+def see_employee_transactions(request, pke):
+    pass

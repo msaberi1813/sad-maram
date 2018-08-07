@@ -1,10 +1,138 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
+{% include "base.html" %}
 
-</body>
-</html>
+{% load static %}
+
+
+
+{% block content %}
+
+<style>
+body {font-family: Arial, Helvetica, sans-serif;}
+
+/* Full-width input fields */
+input[type=text], input[type=password], input[type=email] {
+    width: 100%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    box-sizing: border-box;
+}
+
+/* Set a style for all buttons */
+button {
+    background-color: #4CAF50;
+    color: white;
+    padding: 14px 20px;
+    margin: 8px 0;
+    border: none;
+    cursor: pointer;
+    width: 100%;
+}
+
+button:hover {
+    opacity: 0.8;
+}
+.error{
+color:red;
+}
+.error input, .error select {
+border: 2px red solid;
+opacity: 80%;
+}
+@media screen and (max-width: 460px) {
+     input[type=submit] , input[type=text] , input[type=password], input[type=email]{
+        margin-top: 0;
+        width: 90%;
+        font-size: 18px;
+        overflow-x: visible;
+
+
+    }
+    div, #dd{
+        width:100%;
+                overflow-x: visible;
+
+    }
+    button{
+    width:50%;
+    }
+}
+</style>
+    <nav class="flex clearfix " id="myTopnav">
+        <div class="topnav" >
+          <a  href="login" style="color:white" >بازگشت به صفحه ورود</a>
+    </nav>
+
+
+<div  style="width:100%" >
+
+
+    <div  id="dd" class="uk-grid  uk-text-right " style=" width:70%; padding: 5%; position: relative ">
+<h2 style="text-direction: rtl; float: right;">لیست کارمندان</h2><br>
+
+   <table id="time" style="top: 5%" class="rtl uk-table uk-table uk-table-striped" >
+
+               <thead>
+                    <tr>
+                        <th class="uk-width-auto"><strong> نام</strong></th>
+                        <th class="uk-width-auto" ><strong> </strong></th>
+                        <th class="uk-width-auto"><strong> </strong></th>
+                        <th class="uk-width-auto"><strong> </strong></th>
+                        <th class="uk-width-auto"><strong> </strong></th>
+
+                    </tr>
+               </thead>
+
+               <tbody>
+                {% for e in employees %}
+
+                    <tr>
+                        <th class="uk-width-auto">{{e.name }} </th>
+
+
+                        <th class="uk-width-auto">
+                        <form method="post" action="{% url 'see_employee_profile' pke=e.pk %}" >
+                            {% csrf_token %}
+                            <input id="submit1" type="submit" class="uk-button" value="مشاهده پروفایل" />
+                        </form>
+                        </th>
+
+
+
+                         <th class="uk-width-auto">
+                        <form method="post" action="{% url 'change_employee_salary' pke=e.pk %}" >
+                            {% csrf_token %}
+                            <input id="submit2" type="submit" class="uk-button" value="تغییر حقوق" />
+                        </form>
+                        </th>
+
+                         <th class="uk-width-auto">
+                        <form method="post" action="{% url 'ban_employee' pke=e.pk %}" >
+                            {% csrf_token %}
+                            <input id="submit3" type="submit" class="uk-button" value="محدود کردن" />
+                        </form>
+                        </th>
+
+                        <th class="uk-width-auto">
+                        <form method="post" action="{% url 'see_employee_transactions' pke=e.pk %}" >
+                            {% csrf_token %}
+                            <input id="submit4" type="submit" class="uk-button" value="مشاهده تراکنش ها" />
+                        </form>
+                        </th>
+
+                    </tr>
+
+               {% endfor %}
+
+               </tbody>
+
+
+           </table><br><br>
+
+    </div>
+
+</div>
+
+
+{% endblock %}
