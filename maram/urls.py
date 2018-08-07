@@ -15,13 +15,15 @@ Including another URLconf
 """
 from django.conf.urls import url
 from django.contrib import admin
+from django.template.context_processors import static
 from django.urls import path, include
 from django.contrib.auth import views as auth_views
-
+from maram import settings
 
 urlpatterns = [
-    url(r'^login/$', auth_views.auth_login, name='login'),
-    url(r'^logout/$', auth_views.auth_logout, name='logout'),
+    path('', include('django.contrib.auth.urls')),
     path('admin/', admin.site.urls),
     path('', include('blog.urls')),
 ]
+
+

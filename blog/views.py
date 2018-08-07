@@ -10,39 +10,40 @@ from blog.forms import NameForm, NameForm2, Nform, ChangePassWordForm, add_emplo
 from blog.models import MyUser, Employee
 
 
-def home(request):
-    return render(request, 'base.html', {})
 
 
 def profile(request):
     f=NameForm()
     return render (request , 'register.html' , {'form':f})
 
-@login_required
+@login_required(redirect_field_name='login')
 def edit(request):
     f=NameForm2(instance=request.user)
     return render (request , 'profile_edit_user.html' , {'form':f , 'user': request.user})
-@login_required
+@login_required(redirect_field_name='login')
 def bala_pass(request):
     f=ChangePassWordForm(request.POST)
     return render (request , 'change_password.html' , {'form':f})
 
+@login_required(redirect_field_name='login')
 def bala_add_employee(request):
-    f=add_employee2(request.POST , instance=request.user)
+    f=add_employee2(instance=request.user)
     return render (request , 'add_employee.html' , {'form':f , 'user': request.user})
 
 def upload_file(request):
     form = NameForm(request.POST, request.FILES)
     if request.method == 'POST' :
         if form.is_valid():
-                user = MyUser.objects.create_user(name=form.data['name'], email=form.data['email'],  acc_num=form.data['acc_num'])
+                user = form.save();
+                user.set_password(form.data['password'])
+                # user = MyUser.objects.create_user(name=form.data['name'], email=form.data['email'],  acc_num=form.data['acc_num'])
                 messages.success(request, 'ثبت نام با موفقیت انجام شد')
                 user.save();
                 return render(request, 'register.html', { 'user':user
                 })
     return render(request, 'register.html', {'form':form})
 
-@login_required
+@login_required(redirect_field_name='login')
 def edit_user_profile(request):
     form = NameForm2(request.POST)
 
@@ -69,8 +70,7 @@ def edit_user_profile(request):
     return render(request, 'profile_edit_user.html', {'form':form})
 
 
-
-@login_required
+@login_required(redirect_field_name='login')
 def change_pass(request):
     form = ChangePassWordForm(request.POST)
     if request.method == 'POST' :
@@ -86,6 +86,7 @@ def change_pass(request):
                 messages.success(request, 'ورودی های خود را چک کنید')
     return render(request, 'change_password.html', {'form':form})
 
+@login_required(redirect_field_name='login')
 def add_employee(request):
     form = add_employee2(request.POST)
     if request.method == 'POST':
