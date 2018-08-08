@@ -69,51 +69,38 @@ opacity: 80%;
 
 
     <div  id="dd" class="uk-grid  uk-text-right " style=" width:70%; padding: 5%; position: relative ">
-<h2 style="text-direction: rtl; float: right;">لیست کارمندان</h2><br>
+<h2 style="text-direction: rtl; float: right;"> تراکنش های کارمند {{e.name}}</h2><br>
 
    <table id="time" style="top: 5%" class="rtl uk-table uk-table uk-table-striped" >
 
                <thead>
                     <tr>
-                        <th class="uk-width-auto"><strong> نام</strong></th>
-                        <th class="uk-width-auto" ><strong> </strong></th>
-                        <th class="uk-width-auto"><strong> </strong></th>
-                        <th class="uk-width-auto"><strong> </strong></th>
-                        <th class="uk-width-auto"><strong> </strong></th>
+                        <th class="uk-width-auto"><strong> نوع</strong></th>
+                        <th class="uk-width-auto" ><strong> وضعیت</strong></th>
+                        <th class="uk-width-auto"><strong> موضوع</strong></th>
+                        <th class="uk-width-auto"><strong>تاریخ </strong></th>
+                        <th class="uk-width-auto"><strong> کاربر</strong></th>
 
                     </tr>
                </thead>
 
                <tbody>
-                {% for e in employees %}
+                {% for t in transactions %}
 
                     <tr>
-                        <th class="uk-width-auto">{{e.name }} </th>
+                        <th class="uk-width-auto">{{ t.type }} </th>
+                        <th class="uk-width-auto">{{ t.status }} </th>
+                        <th class="uk-width-auto">{{ t.subject }} </th>
+                        <th class="uk-width-auto">{{ t.date }} </th>
+                        <th class="uk-width-auto">{{ t.user }} </th>
 
-
-                        <th class="uk-width-auto">
-                        <form method="post" action="{% url 'see_employee_profile' pke=e.pk %}" >
-                            {% csrf_token %}
-                            <input id="submit1" type="submit" class="uk-button" value="مشاهده پروفایل" />
-                        </form>
-                        </th>
-
-
-
-                         <th class="uk-width-auto">
-                        <form method="post" action="{% url 'change_empsalary' pke=e.pk %}" >
-                            {% csrf_token %}
-                            <input id="submit2" type="submit" class="uk-button" value="تغییر حقوق" />
-                        </form>
-                        </th>
-
-
-                         <th class="uk-width-auto">
-                        <form method="post" action="{% url 'see_employee_transactions' pke=e.pk %}" >
+                       <th class="uk-width-auto">
+                        <form method="post" action="{% url 'see_transaction_context' pkt=t.pk %}" >
                             {% csrf_token %}
                             <input id="submit3" type="submit" class="uk-button" value="تراکنش ها" />
                         </form>
                         </th>
+
 
 
                     </tr>

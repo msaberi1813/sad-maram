@@ -7,9 +7,7 @@ from django.contrib.auth.models import User
 
 from blog.forms import NameForm, NameForm2, Nform, ChangePassWordForm, add_employee2, ChangeSalary
 # from blog.models import MyUser
-from blog.models import MyUser, Employee
-
-
+from blog.models import MyUser, Employee, Transaction
 
 
 def profile(request):
@@ -120,7 +118,6 @@ def bala_change_employee_salary(request,pke):
     return render(request, 'change_employee_salary.html' ,{'form':form , 'e':u} )
 
 def change_salary(request , pke):
-    print("im hereeeeeeeeeeeeeeeeeeeeeeeeee")
     form = ChangeSalary(request.POST)
     if request.method == 'POST' :
         if form.is_valid():
@@ -135,7 +132,13 @@ def change_salary(request , pke):
 
 
 def ban_employee(request, pke):
-    pass
+    pass #todo
 
 def see_employee_transactions(request, pke):
-    pass
+    e = Employee.objects.filter(pk = pke).first()
+    t = Transaction.objects.filter(employee = e)
+    return render(request, 'employee_transactions.html', {'transactions': t , 'e':e})
+
+def see_transaction_context(request, pkt):
+    t = Transaction.objects.filter(pk = pkt).first()
+    return render(request , 'transaction_context.html' , {'t':t})

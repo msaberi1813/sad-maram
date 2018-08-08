@@ -15,5 +15,7 @@ urlpatterns = [
     url(r'^(?P<pke>\d+)/empProfile$', views.see_employee_profile, name='see_employee_profile'),
     url(r'^(?P<pke>\d+)/change_salaryyy$', views.bala_change_employee_salary, name='change_empsalary'),
     url(r'^(?P<pke>\d+)/change_salary$', views.change_salary, name='change_salary'),
+    url(r'^(?P<pke>\d+)/emp_transactions$', views.see_employee_transactions, name='see_employee_transactions'),
+    url(r'^(?P<pkt>\d+)/emp_transactions_context$', views.see_transaction_context, name='see_transaction_context'),
 
 ]
