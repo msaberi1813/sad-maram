@@ -1,5 +1,6 @@
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
+import requests
 from django.shortcuts import render
 
 # Create your views here.
@@ -142,3 +143,11 @@ def see_employee_transactions(request, pke):
 def see_transaction_context(request, pkt):
     t = Transaction.objects.filter(pk = pkt).first()
     return render(request , 'transaction_context.html' , {'t':t})
+
+def nerkh_arz(request):
+    response = requests.get('https://www.faranevis.com/api/currency/')
+    geodata = response.json()
+    return render(request, 'nerkh_arz.html', {
+        'dollar': geodata['دلار'],
+        'euro': geodata['یورو'],
+    })

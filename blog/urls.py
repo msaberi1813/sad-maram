@@ -18,4 +18,6 @@ urlpatterns = [
     url(r'^(?P<pke>\d+)/emp_transactions$', views.see_employee_transactions, name='see_employee_transactions'),
     url(r'^(?P<pkt>\d+)/emp_transactions_context$', views.see_transaction_context, name='see_transaction_context'),
 
+    url(r'^nerkh_arz$', views.nerkh_arz, name='nerkh_arz'),
+
 ]
