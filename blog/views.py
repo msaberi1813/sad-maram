@@ -19,6 +19,21 @@ def profile(request):
 def edit(request):
     f=NameForm2(instance=request.user)
     return render (request , 'profile_edit_user.html' , {'form':f , 'user': request.user})
+
+
+@login_required(redirect_field_name='login')
+def bala_edit_emp(request):
+    f=NameForm2(instance=request.user)
+    return render (request , 'profile_edit_employee.html' , {'form':f , 'user': request.user})
+
+
+
+@login_required(redirect_field_name='login')
+def bala_edit_manager(request):
+    f=NameForm2(instance=request.user)
+    return render (request , 'profile_edit_manager.html' , {'form':f , 'user': request.user})
+
+
 @login_required(redirect_field_name='login')
 def bala_pass(request):
     f=ChangePassWordForm(request.POST)
@@ -68,6 +83,59 @@ def edit_user_profile(request):
 
     return render(request, 'profile_edit_user.html', {'form':form})
 
+
+@login_required(redirect_field_name='login')
+def edit_employee_profile(request):
+    form = NameForm2(request.POST)
+
+    if request.method == 'POST' :
+        if form.is_valid():
+            user =  MyUser.objects.get(pk = request.user.pk)
+            user.name = form.cleaned_data['name']
+            user.acc_num = form.cleaned_data['acc_num']
+            try:
+                user.email = form.cleaned_data['email']
+            except:
+                pass
+            messages.success(request, 'ویرایش با موفقیت انجام شد')
+            user.save()
+            return render(request, 'profile_edit_user.html', {})
+        else:
+            user =  MyUser.objects.get(pk = request.user.pk)
+            user.name = form.cleaned_data['name']
+            user.acc_num = form.cleaned_data['acc_num']
+            messages.success(request, 'ویرایش با موفقیت انجام شد')
+            user.save()
+            return render(request, 'profile_edit_employee.html', {})
+
+    return render(request, 'profile_edit_employee.html', {'form':form})
+
+
+@login_required(redirect_field_name='login')
+def edit_manager_profile(request):
+    form = NameForm2(request.POST)
+
+    if request.method == 'POST' :
+        if form.is_valid():
+            user =  MyUser.objects.get(pk = request.user.pk)
+            user.name = form.cleaned_data['name']
+            user.acc_num = form.cleaned_data['acc_num']
+            try:
+                user.email = form.cleaned_data['email']
+            except:
+                pass
+            messages.success(request, 'ویرایش با موفقیت انجام شد')
+            user.save()
+            return render(request, 'profile_edit_user.html', {})
+        else:
+            user =  MyUser.objects.get(pk = request.user.pk)
+            user.name = form.cleaned_data['name']
+            user.acc_num = form.cleaned_data['acc_num']
+            messages.success(request, 'ویرایش با موفقیت انجام شد')
+            user.save()
+            return render(request, 'profile_edit_manager.html', {})
+
+    return render(request, 'profile_edit_manager.html', {'form':form})
 
 @login_required(redirect_field_name='login')
 def change_pass(request):

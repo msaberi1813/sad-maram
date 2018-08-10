@@ -42,6 +42,8 @@ class NameForm2(forms.ModelForm):
 
         }
 
+
+
 class ChangePassWordForm(forms.Form):
     old_pass = forms.CharField(max_length=80, widget=forms.PasswordInput(), label=u"رمز عبور")
     new_pass = forms.CharField(max_length=80, widget=forms.PasswordInput(), label=u"رمز عبور جديد")

@@ -2,7 +2,7 @@ from django.conf.urls import url
 from django.urls import path
 from . import views
 urlpatterns = [
-    path('', views.profile, name='post_list'),#todo change to the homepage
+    path('', views.profile, name='post_list'),#todo change to the homepage (should be in 3 part for each diffrent usr)
     url(r'^upload_file$', views.upload_file, name='upload_file'),
     url(r'^profile$', views.profile, name='profile'),
     url(r'^edit$', views.edit, name='edit'),
@@ -17,6 +17,10 @@ urlpatterns = [
     url(r'^(?P<pke>\d+)/change_salary$', views.change_salary, name='change_salary'),
     url(r'^(?P<pke>\d+)/emp_transactions$', views.see_employee_transactions, name='see_employee_transactions'),
     url(r'^(?P<pkt>\d+)/emp_transactions_context$', views.see_transaction_context, name='see_transaction_context'),
+    url(r'^bala_edit_emp$', views.bala_edit_emp, name='bala_edit_emp'),
+    url(r'^edit_employee_profile$', views.edit_employee_profile, name='edit_employee_profile'),
+    url(r'^bala_edit_manager$', views.bala_edit_manager, name='bala_edit_manager'),
+    url(r'^edit_manager_profile$', views.edit_manager_profile, name='edit_manager_profile'),
 
     url(r'^nerkh_arz$', views.nerkh_arz, name='nerkh_arz'),
 
