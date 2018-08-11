@@ -1,0 +1,120 @@
+{% include "base.html" %}
+
+{% load static %}
+
+
+
+{% block content %}
+
+<style>
+body {font-family: Arial, Helvetica, sans-serif;}
+
+/* Full-width input fields */
+input[type=text], input[type=password], input[type=email] {
+    width: 100%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    box-sizing: border-box;
+}
+
+/* Set a style for all buttons */
+button {
+    background-color: #4CAF50;
+    color: white;
+    padding: 14px 20px;
+    margin: 8px 0;
+    border: none;
+    cursor: pointer;
+    width: 100%;
+}
+
+button:hover {
+    opacity: 0.8;
+}
+.error{
+color:red;
+}
+.error input, .error select {
+border: 2px red solid;
+opacity: 80%;
+}
+@media screen and (max-width: 460px) {
+     input[type=submit] , input[type=text] , input[type=password], input[type=email]{
+        margin-top: 0;
+        width: 90%;
+        font-size: 18px;
+        overflow-x: visible;
+
+
+    }
+    div, #dd{
+        width:100%;
+                overflow-x: visible;
+
+    }
+    button{
+    width:50%;
+    }
+}
+</style>
+    <nav class="flex clearfix " id="myTopnav">
+        <div class="topnav" >
+          <a  href="login" style="color:white" >بازگشت به صفحه ورود</a>
+    </nav>
+
+
+<div  style="width:100%" >
+
+
+    <div  id="dd" class="uk-grid  uk-text-right " style=" width:70%; padding: 5%; position: relative ">
+<h2 style="text-direction: rtl; float: right;"> تراکنش های کارمند {{e.name}}</h2><br>
+
+   <table id="time" style="top: 5%" class="rtl uk-table uk-table uk-table-striped" >
+
+               <thead>
+                    <tr>
+                        <th class="uk-width-auto"><strong> نوع</strong></th>
+                        <th class="uk-width-auto" ><strong> وضعیت</strong></th>
+                        <th class="uk-width-auto"><strong> موضوع</strong></th>
+                        <th class="uk-width-auto"><strong>تاریخ </strong></th>
+                        <th class="uk-width-auto"><strong> کارمند</strong></th>
+
+                    </tr>
+               </thead>
+
+               <tbody>
+                {% for t in transactions %}
+
+                    <tr>
+                        <th class="uk-width-auto">{{ t.type }} </th>
+                        <th class="uk-width-auto">{{ t.status }} </th>
+                        <th class="uk-width-auto">{{ t.subject }} </th>
+                        <th class="uk-width-auto">{{ t.date }} </th>
+                        <th class="uk-width-auto">{{ t.employee }} </th>
+
+                       <th class="uk-width-auto">
+                        <form method="post" action="{% url 'see_transaction_context' pkt=t.pk %}" >
+                            {% csrf_token %}
+                            <input id="submit3" type="submit" class="uk-button" value="تراکنش ها" />
+                        </form>
+                        </th>
+
+
+
+                    </tr>
+
+               {% endfor %}
+
+               </tbody>
+
+
+           </table><br><br>
+
+    </div>
+
+</div>
+
+
+{% endblock %}

@@ -174,10 +174,19 @@ def employee_list(request):
     print(employees)
     return render(request, 'employee_list.html',{'employees':employees} )
 
+def usr_list(request):
+    employees = MyUser.objects.all()
+
+    return render(request, 'usr_list.html',{'employees':employees} )
+
+
 def see_employee_profile(request, pke):
     e = Employee.objects.filter(pk = pke).first()
-    return render(request, 'employee_profile.html' , {'e':e})
+    return render(request, 'employee_profile.html' , {'e': e})
 
+def see_usr_profile(request, pke):
+    e = MyUser.objects.filter(pk = pke).first()
+    return render(request, 'usr_profile.html' , {'e': e})
 
 def bala_change_employee_salary(request,pke):
     form = ChangeSalary(request.POST)
@@ -207,6 +216,13 @@ def see_employee_transactions(request, pke):
     e = Employee.objects.filter(pk = pke).first()
     t = Transaction.objects.filter(employee = e)
     return render(request, 'employee_transactions.html', {'transactions': t , 'e':e})
+
+
+def see_usr_transactions(request, pke):
+    e = MyUser.objects.filter(pk = pke).first()
+    t = Transaction.objects.filter(employee = e)
+    return render(request, 'usr_transactions.html', {'transactions': t , 'e':e})
+
 
 def see_transaction_context(request, pkt):
     t = Transaction.objects.filter(pk = pkt).first()

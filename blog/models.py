@@ -5,6 +5,11 @@ from django.contrib.auth.base_user import BaseUserManager
 from django.db import models
 from django.contrib.auth.base_user import AbstractBaseUser
 
+
+class Person(models.Model):
+    class Meta:
+        abstract = True
+
 class MyUserManager(BaseUserManager):
     def create_user(self, email,acc_num="0",  name = "ناشناس", password=None ):
         if not email:
@@ -33,7 +38,7 @@ class MyUserManager(BaseUserManager):
 
 
 
-class MyUser(AbstractBaseUser):
+class MyUser(AbstractBaseUser, Person):
     email = models.EmailField(max_length=254, unique=True, db_index=True , null=False , blank=False)
     name = models.CharField(max_length=50 , default="ناشناس" , null=True, blank=True)
     acc_num =  models.CharField(max_length=30 , null=False, blank=False)
@@ -43,6 +48,7 @@ class MyUser(AbstractBaseUser):
 
     is_active = models.BooleanField(default=True)
     is_admin = models.BooleanField(default=False)
+    is_employee = models.BooleanField(default=False)
 
     objects = MyUserManager()
 
@@ -67,8 +73,26 @@ class MyUser(AbstractBaseUser):
     def is_staff(self):
         return self.is_admin
 
-class Employee(MyUser):
+class Employee(MyUser, BaseUserManager):
     salary = models.IntegerField(default=0)
+    def __init__(self):
+        MyUser.__init__(self)
+
+    def create_user(self, email,acc_num="0",salary="0",  name = "ناشناس", password=None ):
+        if not email:
+            raise ValueError('وارد کردن ایمیل ضروری است!')
+
+        user = self.model(
+            email=MyUserManager.normalize_email(email),
+            name = name,
+            salary = salary,
+            acc_num = acc_num,
+        )
+        user.is_employee=True
+        user.set_password(password)
+        user.save(using=self._db)
+        return user
+
 
 class Manager(MyUser):
     dollor_account =  models.CharField(max_length=30 , null=False , default="موضوع");
