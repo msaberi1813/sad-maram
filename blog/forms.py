@@ -1,10 +1,18 @@
 from django import forms
+from django.contrib import messages
 from django.contrib.auth.models import User
 from django.core.exceptions import NON_FIELD_ERRORS, ValidationError
 from django.forms import ModelForm
 
 from blog.models import MyUser, Employee
+from django.contrib.auth.forms import AuthenticationForm
 
+class AuthenticationFormWithChekUsersStatus(AuthenticationForm):
+    def confirm_login_allowed(self, user):
+        if not user.status == 'enabled':
+            return 1
+        else:
+            return 2
 
 class NameForm(forms.ModelForm):
     error_css_class = "error"

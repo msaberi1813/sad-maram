@@ -6,7 +6,8 @@ from django.shortcuts import render
 # Create your views here.
 from django.contrib.auth.models import User
 
-from blog.forms import NameForm, NameForm2, Nform, ChangePassWordForm, add_employee2, ChangeSalary
+from blog.forms import NameForm, NameForm2, Nform, ChangePassWordForm, add_employee2, ChangeSalary, \
+    AuthenticationFormWithChekUsersStatus
 # from blog.models import MyUser
 from blog.models import MyUser, Employee, Transaction
 
@@ -227,6 +228,41 @@ def see_usr_transactions(request, pke):
 def see_transaction_context(request, pkt):
     t = Transaction.objects.filter(pk = pkt).first()
     return render(request , 'transaction_context.html' , {'t':t})
+
+
+def ban_usr(request, pke):
+    u = MyUser.objects.filter(pk = pke).first()
+    u.status = "banned"
+    u.save()
+    e=AuthenticationFormWithChekUsersStatus(request.POST)
+    r = e.confirm_login_allowed(u)
+    if r ==1:
+        messages.success(request, 'محدود شد')
+    if r ==2:
+        messages.success(request, 'نامحدود شد')
+    employees = MyUser.objects.all()
+
+    employees = MyUser.objects.all()
+    return render(request , 'usr_list.html', {'e':u , 'employees':employees})
+
+def ban_emp(request, pke):
+    u = Employee.objects.filter(pk = pke).first()
+    if u.status == "enabled":
+      u.status = "banned"
+    else:
+      u.status="enabled"
+    u.save()
+    e=AuthenticationFormWithChekUsersStatus(request.POST)
+    r=e.confirm_login_allowed(u)
+    if r ==1:
+        messages.success(request, 'محدود شد')
+    if r ==2:
+        messages.success(request, 'نامحدود شد')
+    employees = MyUser.objects.all()
+
+    return render(request , 'employee_list.html', {'e':u , 'employees': employees})
+
+
 
 def nerkh_arz(request):
     response = requests.get('https://www.faranevis.com/api/currency/')

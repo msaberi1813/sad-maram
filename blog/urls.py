@@ -24,6 +24,8 @@ urlpatterns = [
     url(r'^(?P<pke>\d+)/usr_transactions$', views.see_usr_transactions, name='see_usr_transactions'),
     url(r'^(?P<pke>\d+)/usrProfile$', views.see_usr_profile, name='see_usr_profile'),
     url(r'^usr_list$', views.usr_list, name='employee_list'),
+    url(r'^(?P<pke>\d+)/usr_ban$', views.ban_usr, name='ban-usr'),
+    url(r'^(?P<pke>\d+)/emp_ban$', views.ban_emp, name='ban_emp'),
 
     url(r'^nerkh_arz$', views.nerkh_arz, name='nerkh_arz'),
 

@@ -9,7 +9,11 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
 <link rel="icon" type="image/png" href="images/icons/favicon.ico"/>
-
+    <link rel="stylesheet" type="text/css" href="{% static 'blog/css/uikit-rtl.css' %}" />
+<script src="{% static 'blog/js/uikit.min.js' %}" ></script>
+    <script src="{% static 'blog/js/uikit-icons.min.js' %}"  ></script>
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+    <link href="https://cdn.rawgit.com/rastikerdar/samim-font/v[X.Y.Z]/dist/font-face.css" rel="stylesheet" type="text/css" />
     <link rel="stylesheet" type="text/css" href="{% static 'blog/css/index_w3.css' %}" />
     <link rel="stylesheet" type="text/css" href="{% static 'blog/css/index_w3-theme-black.css' %}" />
     <link href='http://www.fontonline.ir/css/BMitra.css' rel='stylesheet' type='text/css'>
@@ -28,7 +32,7 @@ html,body,h1,h2,h3,h4,h5,h6 {font-family: "Roboto","B Nazanin", sans-serif;}
   height: inherit;
 }
 </style>
-<body>
+<body onload="startTime()>
 
 <!-- Navbar -->
 <div class="w3-top">

@@ -69,15 +69,20 @@ opacity: 80%;
 
 
     <div  id="dd" class="uk-grid  uk-text-right " style=" width:70%; padding: 5%; position: relative ">
-<h2 style="text-direction: rtl; float: right;">لیست کارمندان</h2><br>
-
+<h2 style="text-direction: rtl; float: right;">لیست کاربران</h2><br>
+{% if messages %}
+    <ul class="messages">
+        {% for message in messages %}
+        <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+        {% endfor %}
+    </ul>
+    {% endif %}
    <table id="time" style="top: 5%" class="rtl uk-table uk-table uk-table-striped" >
 
                <thead>
                     <tr>
                         <th class="uk-width-auto"><strong> نام</strong></th>
                         <th class="uk-width-auto" ><strong> </strong></th>
-                        <th class="uk-width-auto"><strong> </strong></th>
                         <th class="uk-width-auto"><strong> </strong></th>
                         <th class="uk-width-auto"><strong> </strong></th>
 
@@ -104,6 +109,17 @@ opacity: 80%;
                         <form method="post" action="{% url 'see_usr_transactions' pke=e.pk %}" >
                             {% csrf_token %}
                             <input id="submit3" type="submit" class="uk-button" value="تراکنش ها" />
+                        </form>
+                        </th>
+
+                        <th class="uk-width-auto">
+                        <form method="post" action="{% url 'ban-usr' pke=e.pk %}" >
+                            {% csrf_token %}
+                                             {% if e.status == "enabled" %}
+                            <input id="submit4" type="submit" class="uk-button" value="محدود کردن" />
+                            {% else %}
+                            <input id="submit5" type="submit" class="uk-button" value="آنبلاک کردن" />
+                            {% endif %}
                         </form>
                         </th>
 

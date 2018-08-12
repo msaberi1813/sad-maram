@@ -1,10 +1,16 @@
 <!DOCTYPE html>
+{% load static %}
+
 <html>
 <title> میز کار</title>
 
 <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-61">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-
+    <link rel="stylesheet" type="text/css" href="{% static 'blog/css/uikit-rtl.css' %}" />
+<script src="{% static 'blog/js/uikit.min.js' %}" ></script>
+    <script src="{% static 'blog/js/uikit-icons.min.js' %}"  ></script>
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+    <link href="https://cdn.rawgit.com/rastikerdar/samim-font/v[X.Y.Z]/dist/font-face.css" rel="stylesheet" type="text/css" />
     <link rel="stylesheet" type="text/css" href="{% static 'blog/css/index_w3.css' %}" />
     <link rel="stylesheet" type="text/css" href="{% static 'blog/css/index_w3-theme-black.css' %}" />
 <link rel="icon" type="image/png" href="images/icons/favicon.ico"/>
@@ -26,7 +32,7 @@ table, th, td {
     border: 1px solid black;
 }
 </style>
-<body>
+<body onload="startTime()>
 
 <!-- Navbar -->
 <div class="w3-top">
@@ -51,7 +57,7 @@ table, th, td {
   <a href="javascript:void(0)" onclick="w3_close()" class="w3-right w3-xlarge w3-padding-large w3-hover-black w3-hide-large" title="Close Menu">
     <i class="fa fa-remove"></i>
   </a>
-  <h3 class="w3-bar-item"><b>ãíÒ ˜ÇÑ ÔãÇ</b></h3>
+  <h3 class="w3-bar-item"><b>میز کار شما</b></h3>
   <a class="w3-bar-item w3-button w3-hover-black" href="#">پروفایل</a>
   <a class="w3-bar-item w3-button w3-hover-black" href="#">صندوق پیام</a>
   <a class="w3-bar-item w3-button w3-hover-black" href="#">تغییر موجودی حساب شرکت</a>

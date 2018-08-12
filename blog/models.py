@@ -40,11 +40,12 @@ class MyUserManager(BaseUserManager):
 
 class MyUser(AbstractBaseUser, Person):
     email = models.EmailField(max_length=254, unique=True, db_index=True , null=False , blank=False)
-    name = models.CharField(max_length=50 , default="ناشناس" , null=True, blank=True)
+    name = models.CharField(max_length=50 , default="ناشناس", null=True, blank=True)
     acc_num =  models.CharField(max_length=30 , null=False, blank=False)
     rial_wallet=models.IntegerField(default=0)
     dollar_wallet=models.IntegerField(default=0)
     euro_wallet=models.IntegerField(default=0)
+    status = models.CharField(max_length=10, default="enabled")
 
     is_active = models.BooleanField(default=True)
     is_admin = models.BooleanField(default=False)
@@ -94,9 +95,23 @@ class Employee(MyUser, BaseUserManager):
         return user
 
 
-class Manager(MyUser):
-    dollor_account =  models.CharField(max_length=30 , null=False , default="موضوع");
-    euro_account = models.CharField(max_length=30 , null=False)
+class Manager(MyUser, BaseUserManager):
+    dollor_account =  models.CharField(max_length=30 , null=False , default="شماره حساب دلار");
+    euro_account = models.CharField(max_length=30 , null=False, default="شماره حساب یورو")
+    def create_user(self, email,acc_num="0",salary="0",  name = "ناشناس", password=None ):
+        if not email:
+            raise ValueError('وارد کردن ایمیل ضروری است!')
+
+        user = self.model(
+            email=MyUserManager.normalize_email(email),
+            name = name,
+            acc_num = acc_num,
+        )
+        user.is_admin=True
+        user.set_password(password)
+        user.save(using=self._db)
+        return user
+
 
 class Transaction(models.Model):
     date = models.DateTimeField(default=timezone.now())

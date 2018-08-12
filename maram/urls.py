@@ -18,12 +18,16 @@ from django.contrib import admin
 from django.template.context_processors import static
 from django.urls import path, include
 from django.contrib.auth import views as auth_views
+
+from blog.forms import AuthenticationFormWithChekUsersStatus
 from maram import settings
 
 urlpatterns = [
     path('', include('django.contrib.auth.urls')),
     path('admin/', admin.site.urls),
     path('', include('blog.urls')),
+    url(r'^login/$', auth_views.LoginView.as_view(authentication_form=AuthenticationFormWithChekUsersStatus)),
+
 ]
 
 

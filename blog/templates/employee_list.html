@@ -69,15 +69,21 @@ opacity: 80%;
 
 
     <div  id="dd" class="uk-grid  uk-text-right " style=" width:70%; padding: 5%; position: relative ">
-<h2 style="text-direction: rtl; float: right;">لیست کارمندان</h2><br>
-
-   <table id="time" style="top: 5%" class="rtl uk-table uk-table uk-table-striped" >
+{% if messages %}
+    <ul class="messages">
+        {% for message in messages %}
+        <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+        {% endfor %}
+    </ul>
+    {% endif %}
+        <h2 style="display: block; text-direction: rtl; float: right;">لیست کارمندان</h2><br>
+<span>
+   <table id="time" style="display:block;float:right; direction:rtl; top: 5%" class="rtl uk-table uk-table uk-table-striped" >
 
                <thead>
                     <tr>
                         <th class="uk-width-auto"><strong> نام</strong></th>
                         <th class="uk-width-auto" ><strong> </strong></th>
-                        <th class="uk-width-auto"><strong> </strong></th>
                         <th class="uk-width-auto"><strong> </strong></th>
                         <th class="uk-width-auto"><strong> </strong></th>
 
@@ -114,6 +120,17 @@ opacity: 80%;
                             <input id="submit3" type="submit" class="uk-button" value="تراکنش ها" />
                         </form>
                         </th>
+                         <th class="uk-width-auto">
+                        <form method="post" action="{% url ' ban_employee' pke=e.pk %}" >
+                            {% csrf_token %}
+                            {% if e.status == "enabled" %}
+                            <input id="submit4" type="submit" class="uk-button" value="محدود کردن" />
+                            {% else %}
+                            <input id="submit5" type="submit" class="uk-button" value="آنبلاک کردن" />
+                            {% endif %}
+                        </form>
+                        </th>
+
 
 
                     </tr>
@@ -124,6 +141,7 @@ opacity: 80%;
 
 
            </table><br><br>
+    </span>
 
     </div>
 
