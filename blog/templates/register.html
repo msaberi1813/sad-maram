@@ -1,10 +1,66 @@
-{% include "base.html" %}
 
 {% load static %}
 
 
 
 {% block content %}
+<title>کاربر</title>
+
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-61">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<link rel="icon" type="image/png" href="images/icons/favicon.ico"/>
+
+    <link rel="stylesheet" type="text/css" href="{% static 'blog/css/index_w3.css' %}" />
+    <link rel="stylesheet" type="text/css" href="{% static 'blog/css/index_w3-theme-black.css' %}" />
+    <link href='http://www.fontonline.ir/css/BMitra.css' rel='stylesheet' type='text/css'>
+    <!--<link rel="stylesheet" type="text/css" href= />-->
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+    <link href="https://cdn.rawgit.com/rastikerdar/samim-font/v[X.Y.Z]/dist/font-face.css" rel="stylesheet" type="text/css" />
+
+
+<style>
+html,body,h1,h2,h3,h4,h5,h6 {font-family: "Roboto","B Nazanin", sans-serif;}
+.w3-sidebar {
+  z-index: 3;
+  width: 250px;
+  top: 43px;
+  bottom: 0;
+  height: inherit;
+}
+</style>
+
+<!-- Navbar -->
+<div class="w3-top">
+  <div class="w3-bar w3-theme w3-top w3-left-align w3-large">
+    <a class="w3-bar-item w3-button w3-right w3-hide-large w3-hover-white w3-large w3-theme-l1" href="javascript:void(0)" onclick="w3_open()"><i class="fa fa-bars"></i></a>
+    <a href="index-employee.html" class="w3-bar-item w3-button w3-theme-l1 w3-right">Logo</a>
+    <a href="index-employee.html#about" class="w3-bar-item w3-button w3-hide-small w3-hover-white w3-right">درباره ما</a>
+	<a href="index-employee.html#policy" class="w3-bar-item w3-button w3-hide-small w3-hover-white w3-right">قوانین</a>
+    <a href="index-employee.html#service" class="w3-bar-item w3-button w3-hide-small w3-hover-white w3-right">نرخ کارمزدها</a>
+	<a href="index-employee.html#nerkh" class="w3-bar-item w3-button w3-hide-small w3-hover-white w3-right">نرخ لحظه ای ارز</a>
+	<a href="index-employee.html#contact" class="w3-bar-item w3-button w3-hide-small w3-hover-white w3-right">ارتباط با ما</a>
+
+	<a href="index.html" class="w3-bar-item w3-button w3-hide-small w3-hover-green">خروج از حساب</a>
+    <a href="#" class="w3-bar-item w3-label w3-hide-small w3-teal w3-hover-teal">"نام کاربر"</a>
+    <!--<a href="#" class="w3-bar-item w3-button w3-hide-small w3-hide-medium w3-hover-white">Clients</a>
+    <a href="#" class="w3-bar-item w3-button w3-hide-small w3-hide-medium w3-hover-white">Partners</a>-->
+  </div>
+</div>
+
+<!-- Sidebar -->
+<nav class="w3-sidebar w3-bar-block w3-collapse w3-large w3-theme-l5 w3-animate-right" style="width:25%;right:0"  id="mySidebar">
+  <a href="javascript:void(0)" onclick="w3_close()" class="w3-right w3-xlarge w3-padding-large w3-hover-black w3-hide-large" title="Close Menu">
+    <i class="fa fa-remove"></i>
+  </a>
+  <h3 class="w3-bar-item"><b>میز کار شما</b></h3>
+  <a class="w3-bar-item w3-button w3-hover-black" href="user-profile.html">پروفایل</a>
+  <a class="w3-bar-item w3-button w3-hover-black" href="user-msgbox.html">صندوق پیام</a>
+  <a class="w3-bar-item w3-button w3-hover-black" href="user-transaction.html">تغییر موجودی حساب</a>
+  <a class="w3-bar-item w3-button w3-hover-black" href="user-charge.html">تبدیل ارز</a>
+  <a class="w3-bar-item w3-button w3-hover-black" href="user-change.html">پرداخت ناشناس</a>
+  <a class="w3-bar-item w3-button w3-hover-black" href="user-unknownpay.html">سایر خدمات</a>
+</nav>
 
 <style>
 body {font-family: Arial, Helvetica, sans-serif;}

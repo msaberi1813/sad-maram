@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html>
+<title>میز کار</title>
+
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-61">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<link rel="icon" type="image/png" href="images/icons/favicon.ico"/>
+<link rel="stylesheet" href="css/index_w3.css">
+<link rel="stylesheet" href="css/index_w3-theme-black.css">
+
+<style>
+html,body,h1,h2,h3,h4,h5,h6 {font-family: "Roboto","B Nazanin", sans-serif;}
+.w3-sidebar {
+  z-index: 3;
+  width: 250px;
+  top: 43px;
+  bottom: 0;
+  height: inherit;
+}
+</style>
+<body>
+
+<!-- Navbar -->
+<div class="w3-top">
+  <div class="w3-bar w3-theme w3-top w3-left-align w3-large">
+    <a class="w3-bar-item w3-button w3-right w3-hide-large w3-hover-white w3-large w3-theme-l1" href="javascript:void(0)" onclick="w3_open()"><i class="fa fa-bars"></i></a>
+    <a href="index-employee.html" class="w3-bar-item w3-button w3-theme-l1 w3-right">Logo</a>
+    <a href="index-employee.html#about" class="w3-bar-item w3-button w3-hide-small w3-hover-white w3-right">درباره ما</a>
+	<a href="index-employee.html#policy" class="w3-bar-item w3-button w3-hide-small w3-hover-white w3-right">قوانین</a>
+    <a href="index-employee.html#service" class="w3-bar-item w3-button w3-hide-small w3-hover-white w3-right">نرخ کارمزدها</a>
+	<a href="index-employee.html#nerkh" class="w3-bar-item w3-button w3-hide-small w3-hover-white w3-right">نرخ لحظه ای ارز</a>
+	<a href="index-employee.html#contact" class="w3-bar-item w3-button w3-hide-small w3-hover-white w3-right">ارتباط با ما</a>
+
+	<a href="index.html" class="w3-bar-item w3-button w3-hide-small w3-hover-green">خروج از حساب</a>
+    <a href="#" class="w3-bar-item w3-label w3-hide-small w3-teal w3-hover-teal">"نام کارمند"</a>
+    <!--<a href="#" class="w3-bar-item w3-button w3-hide-small w3-hide-medium w3-hover-white">Clients</a>
+    <a href="#" class="w3-bar-item w3-button w3-hide-small w3-hide-medium w3-hover-white">Partners</a>-->
+  </div>
+</div>
+
+<!-- Sidebar -->
+<nav class="w3-sidebar w3-bar-block w3-collapse w3-large w3-theme-l5 w3-animate-right" style="width:25%;right:0"  id="mySidebar">
+  <a href="javascript:void(0)" onclick="w3_close()" class="w3-right w3-xlarge w3-padding-large w3-hover-black w3-hide-large" title="Close Menu">
+    <i class="fa fa-remove"></i>
+  </a>
+  <h3 class="w3-bar-item"><b>پروفایل</b></h3>
+  <a class="w3-bar-item w3-button w3-hover-black" href="#">تغییر موجودی حساب</a>
+  <a class="w3-bar-item w3-button w3-hover-black" href="#">تراکنش های قبلی</a>
+  <a class="w3-bar-item w3-button w3-hover-black" href="#">تراکنش های در حال انتظار</a>
+</nav>
+
+<!-- Overlay effect when opening sidebar on small screens -->
+<div class="w3-overlay w3-hide-large" onclick="w3_close()" style="cursor:pointer" title="close side menu" id="myOverlay"></div>
+
+<!-- Main content: shift it to the right by 250 pixels when the sidebar is visible -->
+
+  <!-- Pagination -->
+  <!--
+  <div class="w3-center w3-padding-32">
+    <div class="w3-bar">
+      <a class="w3-button w3-black" href="#">1</a>
+      <a class="w3-button w3-hover-black" href="#">2</a>
+      <a class="w3-button w3-hover-black" href="#">3</a>
+      <a class="w3-button w3-hover-black" href="#">4</a>
+      <a class="w3-button w3-hover-black" href="#">5</a>
+      <a class="w3-button w3-hover-black" href="#">»</a>
+    </div>
+  </div>
+  -->
+
+  <footer id="myFooter">
+
+	<!--
+    <div class="w3-container w3-theme-l2 w3-padding-32">
+      <h4>Footer</h4>
+    </div>
+	-->
+
+    <div class="w3-container w3-theme-l1">
+      <p>ãÑÇã ÑÏÇÎÊ</p>
+    </div>
+  </footer>
+
+<!-- END MAIN -->
+</div>
+
+<script>
+// Get the Sidebar
+var mySidebar = document.getElementById("mySidebar");
+
+// Get the DIV with overlay effect
+var overlayBg = document.getElementById("myOverlay");
+
+// Toggle between showing and hiding the sidebar, and add overlay effect
+function w3_open() {
+    if (mySidebar.style.display === 'block') {
+        mySidebar.style.display = 'none';
+        overlayBg.style.display = "none";
+    } else {
+        mySidebar.style.display = 'block';
+        overlayBg.style.display = "block";
+    }
+}
+
+// Close the sidebar with the close button
+function w3_close() {
+    mySidebar.style.display = "none";
+    overlayBg.style.display = "none";
+}
+
+// Check if inputs are valid
+function confirmInput() {
+			emailbox = document.getElementById("email_box");
+			messagebox = document.getElementById("message_box");
+			if(emailbox.value==null || emailbox.value=="" || messagebox.value==null || messagebox.value==""){
+				alert("ÈÇíÏ ÊãÇã ÞÓãÊ åÇí * ÏÇÑ ÑÇ ÑäíÏ!");
+			}
+
+			var rea = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$/;
+			var x = rea.test(emailbox.value);
+			if (!x) {
+				alert('ÓÇÎÊÇÑ Çíãíá äÇãÚÊÈÑ ÇÓÊ!');
+			}
+		}
+
+// Open location on map
+function myMap() {
+    var mapOptions = {
+        center: new google.maps.LatLng(35.702513, 51.351243),
+        zoom: 15,
+        mapTypeId: google.maps.MapTypeId.HYBRID
+    }
+var map = new google.maps.Map(document.getElementById("map"), mapOptions);
+}
+</script>
+<script src="https://maps.googleapis.com/maps/api/js?callback=myMap"></script>
+
+</body>
+</html>

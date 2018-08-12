@@ -1,0 +1,30 @@
+{% include "base_employee.html" %}
+
+{% load static %}
+
+{% block title %}
+تغییر رمز عبور:
+    <script type="text/javascript">
+        selected(7);
+    </script>
+{% endblock %}
+{% block header %}
+    <form action=" change_pass" method="post">
+    {% csrf_token %}
+        <div class="bordered_div">
+     
+            <br/>
+          {% csrf_token %}
+    <ul class="messages">
+        {% for message in messages %}
+        <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+        {% endfor %}
+    </ul>
+
+      {{ form.as_p }}
+
+            <br/>
+            <div align="center"><input class="submit-under-form" type="submit" value="تایید"></div>
+        </div>
+    </form>
+{% endblock %}
