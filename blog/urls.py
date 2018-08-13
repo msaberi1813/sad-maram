@@ -25,8 +25,9 @@ urlpatterns = [
     url(r'^(?P<pke>\d+)/usrProfile$', views.see_usr_profile, name='see_usr_profile'),
     url(r'^usr_list$', views.usr_list, name='employee_list'),
     url(r'^(?P<pke>\d+)/usr_ban$', views.ban_usr, name='ban-usr'),
-    url(r'^(?P<pke>\d+)/emp_ban$', views.ban_emp, name='ban_emp'),
+    url(r'^(?P<pke>\d+)/ban_emp$', views.ban_emp, name='ban_employee'),
+    url(r'^arz_convert$', views.tabdil_arz, name='arz_convert'),
 
-    url(r'^nerkh_arz$', views.nerkh_arz, name='nerkh_arz'),
+    url(r'^nerkh_arz$', views.nerkh_arz2, name='nerkh_arz'),
 
 ]

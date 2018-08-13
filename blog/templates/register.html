@@ -41,7 +41,7 @@ html,body,h1,h2,h3,h4,h5,h6 {font-family: "Roboto","B Nazanin", sans-serif;}
 	<a href="index-employee.html#nerkh" class="w3-bar-item w3-button w3-hide-small w3-hover-white w3-right">نرخ لحظه ای ارز</a>
 	<a href="index-employee.html#contact" class="w3-bar-item w3-button w3-hide-small w3-hover-white w3-right">ارتباط با ما</a>
 
-	<a href="index.html" class="w3-bar-item w3-button w3-hide-small w3-hover-green">خروج از حساب</a>
+	<a href="{% url 'login' %}" class="w3-bar-item w3-button w3-hide-small w3-hover-green">ورود</a>
     <a href="#" class="w3-bar-item w3-label w3-hide-small w3-teal w3-hover-teal">"نام کاربر"</a>
     <!--<a href="#" class="w3-bar-item w3-button w3-hide-small w3-hide-medium w3-hover-white">Clients</a>
     <a href="#" class="w3-bar-item w3-button w3-hide-small w3-hide-medium w3-hover-white">Partners</a>-->
@@ -73,8 +73,14 @@ input[type=text], input[type=password], input[type=email] {
     display: inline-block;
     border: 1px solid #ccc;
     box-sizing: border-box;
-}
+    float: right !important;
+    align: right;
 
+}
+lable{
+float: right !important;
+align: right;
+}
 /* Set a style for all buttons */
 button {
     background-color: #4CAF50;
@@ -114,8 +120,10 @@ opacity: 80%;
     width:50%;
     }
 }
+
+
 </style>
-    <nav class="flex clearfix " id="myTopnav">
+    <nav class="flex clearfix " id="myTopnav" style="float:right;">
         <div class="topnav" >
           <a  href="login" style="color:white" >بازگشت به صفحه ورود</a>
     </nav>
@@ -127,7 +135,7 @@ opacity: 80%;
     <div  id="dd" class="uk-grid  uk-text-right " style=" width:70%; padding: 5%; position: relative ">
 <h2 style="text-direction: rtl; float: right;">ثبت نام</h2><br>
 
-<form method="post" action="upload_file" id="three" enctype="multipart/form-data">
+<form method="post" action="upload_file" id="three" enctype="multipart/form-data" style="float:right;">
     {% csrf_token %}
     {% if messages %}
     <ul class="messages">

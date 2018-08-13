@@ -2,3 +2,43 @@
   <h2>GEO API</h2>
   <p>dollar is <strong>{{ dollar.قیمت }}</strong><br>
       euro is <strong>{{ euro.قیمت }}</strong> right now.</p>
+
+  <div id="nerkh-arz" class="w3-row w3-padding-64">
+	<div class="w3-third w3-container">
+      <p class="w3-border w3-padding-large w3-padding-32 w3-center">AD</p>
+      <p class="w3-border w3-padding-large w3-padding-64 w3-center">AD</p>
+    </div>
+    <div class="w3-twothird w3-container" dir="rtl">
+		<!--<h1 class="w3-text-teal">äÑÎ áÍÙå Çí ÇÑÒ</h1>-->
+		<!--<p style="text-align:right">:äÑÎ äæäí ÇÑÒ Èå ÔÑÍ ÒíÑ ÇÓÊ</p>-->
+		<!--<p style="text-align:right">((áíÈá äÑÎ åÑ ÏáÇÑ æ åÑ íæÑæ Èå ÑíÇá))</p>-->
+		<!--<p style="text-align:right">ÈÑÇí ãÔÇåÏå ãÞÏÇÑ ÊÈÏíá ÔÏå Èå ÇÑÒ ãæÑÏ äÙÑ Ó ÇÒ ÓÑ ÇÑãÒÏ ÊÈÏíá¡ ãí ÊæÇäíÏ ÇÒ ÈÎÔ ÒíÑ ÇÓÊÝÇÏå äíÏ</p>-->
+		<div>
+		<form method="post" action="arz_convert"  >
+                {% csrf_token %}
+
+			<p>تبدیل از</p>
+			<select id="from" name = "from" >
+				<OPTION Value="rial">ریال</OPTION>
+				<OPTION Value="dollar">دلار</OPTION>
+				<OPTION Value="euro">یورو</OPTION>
+			</select>
+			<p>به</p>
+			<select id="to" name="to">
+				<OPTION Value="rial">ریال</OPTION>
+				<OPTION Value="dollar">دلار</OPTION>
+				<OPTION Value="euro">یورو</OPTION>
+			</select>
+			<p>مقدار مورد نظر: </p>
+			<input id="amount-from" name="amount-from" type="text" value=""/>
+
+            <input type="hidden"  name="d" value={{ dollar.قیمت }} >
+            <input type="hidden"  name="e" value={{ euro.قیمت }} >
+
+			<input id="change" type="submit" value="تبدیل"/>
+		</form>
+		<p>پاسخ:</p>
+		<label id="amount-to">{{answer}}</label>
+		</div>
+	</div>
+  </div>

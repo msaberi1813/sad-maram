@@ -31,11 +31,58 @@ html,body,h1,h2,h3,h4,h5,h6 {font-family: "Roboto","B Nazanin", sans-serif;}
   bottom: 0;
   height: inherit;
 }
+.icon {
+    display: none;
+}
+
+@media screen and (max-width: 800px) {
+  .topnav a {
+    display: none !important;
+  }
+  .topnav a.icon {
+    float: right !important;
+    display: block !important;
+    right: 50px !important;
+
+  }
+  .date-logout{
+  display: none !important;
+  }
+
+}
+
+@media screen and (max-width: 800px) {
+  .topnav.responsive: not(.logo1) {position: relative !important;
+  float: right !important;
+  top:100px !important;
+  }
+  .topnav.responsive a.icon {
+    position: relative !important;
+    right:50px !important;
+    top: 0px !important;
+    float: right !important;
+  }
+
+  .topnav.responsive a {
+    float: none !important;
+    display: block !important;
+    text-align: right !important;
+  }
+
+    .topnav.responsive .dropdown {float: none;}
+  .topnav.responsive .dropdown-content {position: relative;}
+  .topnav.responsive .dropdown .dropbtn {
+    display: block !important;
+    width: 100% !important;
+
+  }
+
+}
 </style>
-<body onload="startTime()>
+<body onload="startTime()">
 
 <!-- Navbar -->
-<div class="w3-top">
+<div class="w3-top topnav" >
   <div class="w3-bar w3-theme w3-top w3-left-align w3-large">
     <a class="w3-bar-item w3-button w3-right w3-hide-large w3-hover-white w3-large w3-theme-l1" href="javascript:void(0)" onclick="w3_open()"><i class="fa fa-bars"></i></a>
     <a href="index-employee.html" class="w3-bar-item w3-button w3-theme-l1 w3-right">Logo</a>
@@ -64,6 +111,9 @@ html,body,h1,h2,h3,h4,h5,h6 {font-family: "Roboto","B Nazanin", sans-serif;}
   <a class="w3-bar-item w3-button w3-hover-black" href="user-charge.html">تبدیل ارز</a>
   <a class="w3-bar-item w3-button w3-hover-black" href="user-change.html">پرداخت ناشناس</a>
   <a class="w3-bar-item w3-button w3-hover-black" href="user-unknownpay.html">سایر خدمات</a>
+
+ <a style=" float: right; position: fixed; right:50px; top:88px;" href="javascript:void(0);" class="icon" onclick="myFunction()">&#9776;</a>
+
 </nav>
 
 <!-- Overlay effect when opening sidebar on small screens -->
@@ -112,6 +162,16 @@ function w3_close() {
     overlayBg.style.display = "none";
 }
 
+</script>
+<script>
+function myFunction() {
+    var x = document.getElementById("menu");
+    if (x.className === "topnav") {
+        x.className += " responsive";
+    } else {
+        x.className = "topnav";
+    }
+}
 </script>
 <script src="https://maps.googleapis.com/maps/api/js?callback=myMap"></script>
 

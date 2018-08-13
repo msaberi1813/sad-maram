@@ -33,7 +33,7 @@ class NameForm(forms.ModelForm):
             }
         }
         widgets = {'password': forms.TextInput(
-                     attrs={'type': 'password', 'required': True}
+                     attrs={'type': 'password', 'required': True, 'float':'right','text-direction':'rtl','align':'right'}
             ),
         }
 
@@ -73,9 +73,12 @@ class ChangeSalary(forms.Form):
     new_salary = forms.CharField(max_length=80, widget=forms.NumberInput(), label=u"حقوق جدید")
 
 
-class Nform():
+class Nform(forms.Form):
+
     class Meta:
-        pass
+
+        fields = ['amount-from' , 'from' , 'to']
+
 
 class UploadFileForm(forms.Form):
     title = forms.CharField(max_length=50)

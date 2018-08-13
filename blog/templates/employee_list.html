@@ -121,7 +121,7 @@ opacity: 80%;
                         </form>
                         </th>
                          <th class="uk-width-auto">
-                        <form method="post" action="{% url ' ban_employee' pke=e.pk %}" >
+                        <form method="post" action="{% url 'ban_employee' pke=e.pk %}" >
                             {% csrf_token %}
                             {% if e.status == "enabled" %}
                             <input id="submit4" type="submit" class="uk-button" value="محدود کردن" />

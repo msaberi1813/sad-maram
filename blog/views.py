@@ -2,12 +2,13 @@ from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 import requests
 from django.shortcuts import render
-
+import schedule
+import time
 # Create your views here.
 from django.contrib.auth.models import User
 
 from blog.forms import NameForm, NameForm2, Nform, ChangePassWordForm, add_employee2, ChangeSalary, \
-    AuthenticationFormWithChekUsersStatus
+    AuthenticationFormWithChekUsersStatus, UploadFileForm
 # from blog.models import MyUser
 from blog.models import MyUser, Employee, Transaction
 
@@ -170,19 +171,19 @@ def add_employee(request):
         return render(request, 'add_employee.html', {'form': form})
 
 def employee_list(request):
-    employees = Employee.objects.all()
+    employees = MyUser.objects.filter(is_employee = True)
     print("fffffffffffffffffffffffffffffffff   ")
     print(employees)
     return render(request, 'employee_list.html',{'employees':employees} )
 
 def usr_list(request):
-    employees = MyUser.objects.all()
+    employees = MyUser.objects.filter(is_employee=False , is_admin = False )
 
     return render(request, 'usr_list.html',{'employees':employees} )
 
 
 def see_employee_profile(request, pke):
-    e = Employee.objects.filter(pk = pke).first()
+    e = MyUser.objects.filter(pk = pke, is_employee = True).first()
     return render(request, 'employee_profile.html' , {'e': e})
 
 def see_usr_profile(request, pke):
@@ -192,7 +193,7 @@ def see_usr_profile(request, pke):
 def bala_change_employee_salary(request,pke):
     form = ChangeSalary(request.POST)
 
-    u = Employee.objects.get(pk=pke)
+    u = MyUser.objects.get(pk=pke ,  is_employee = True)
 
     return render(request, 'change_employee_salary.html' ,{'form':form , 'e':u} )
 
@@ -200,7 +201,7 @@ def change_salary(request , pke):
     form = ChangeSalary(request.POST)
     if request.method == 'POST' :
         if form.is_valid():
-            u = Employee.objects.get(pk=pke)
+            u = MyUser.objects.get(pk=pke ,  is_employee = True)
             u.salary = form.data['new_salary']
             u.save()
             messages.success(request, 'تغییر حقوق با موفقیت انجام شد')
@@ -214,7 +215,7 @@ def ban_employee(request, pke):
     pass #todo
 
 def see_employee_transactions(request, pke):
-    e = Employee.objects.filter(pk = pke).first()
+    e = MyUser.objects.filter(pk = pke ,  is_employee = True).first()
     t = Transaction.objects.filter(employee = e)
     return render(request, 'employee_transactions.html', {'transactions': t , 'e':e})
 
@@ -237,16 +238,20 @@ def ban_usr(request, pke):
     e=AuthenticationFormWithChekUsersStatus(request.POST)
     r = e.confirm_login_allowed(u)
     if r ==1:
+        u.is_active = False
+        u.save()
         messages.success(request, 'محدود شد')
     if r ==2:
+        u.is_active = True
+        u.save()
         messages.success(request, 'نامحدود شد')
     employees = MyUser.objects.all()
 
-    employees = MyUser.objects.all()
+    employees = MyUser.objects.filter(is_employee = False , is_admin = False)
     return render(request , 'usr_list.html', {'e':u , 'employees':employees})
 
 def ban_emp(request, pke):
-    u = Employee.objects.filter(pk = pke).first()
+    u = MyUser.objects.filter(pk = pke , is_employee = True).first()
     if u.status == "enabled":
       u.status = "banned"
     else:
@@ -258,16 +263,75 @@ def ban_emp(request, pke):
         messages.success(request, 'محدود شد')
     if r ==2:
         messages.success(request, 'نامحدود شد')
-    employees = MyUser.objects.all()
+    employees = MyUser.objects.filter(is_employee= True)
 
     return render(request , 'employee_list.html', {'e':u , 'employees': employees})
 
 
 
-def nerkh_arz(request):
+def nerkh_arz2(request):
     response = requests.get('https://www.faranevis.com/api/currency/')
     geodata = response.json()
     return render(request, 'nerkh_arz.html', {
         'dollar': geodata['دلار'],
         'euro': geodata['یورو'],
     })
+
+def tabdil_arz(request ):
+    response = requests.get('https://www.faranevis.com/api/currency/')
+    geodata = response.json()
+
+    if request.method == 'POST' :
+            print("iiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiii")
+
+            data1 = request.POST['from']
+            print("data1")
+            print(data1)
+            data2 = request.POST['to']
+            print("data2")
+            print(data2)
+            d = (request.POST['d'])
+            print("d")
+            print(type(d))
+            e = (request.POST['e'])
+            a = (request.POST['amount-from'])
+            print("e")
+            print(type(e))
+            print("a")
+            print(type(a))
+            dd = d.split(',')
+            ee = e.split(',')
+            print(dd)
+            print(ee)
+            d=""
+            for i in range(len(dd)):
+                d+=dd[i]
+            e=""
+            for i in range(len(ee)):
+                e+=ee[i]
+            print(d)
+            d = int(float(str(d)))
+            e = int(float(str(e)))
+            a = int(float(str(a)))
+            answer=0
+            if data1 != data2:
+                if data1 == 'rial' and data2 == 'euro':
+                    answer = a*e
+                if data1 == 'rial' and data2 == 'dollar':
+                    answer = a*d
+                if data1 == 'dollar' and data2 == 'euro':
+                    answer = a*(e/d)
+                if data1 == 'euro' and data2 == 'dollar':
+                    answer = a * (d / e)
+            else:
+                answer = a
+            print("ggggggggggggggggggggggggggggg")
+            print(answer)
+            return render(request, 'nerkh_arz.html',
+                              {'answer': answer, 'dollar': geodata['دلار'], 'euro': geodata['یورو'], })
+
+    return render(request , 'nerkh_arz.html' , { 'dollar': geodata['دلار'], 'euro': geodata['یورو'],})
+
+
+
+
