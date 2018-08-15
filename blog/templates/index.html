@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+{% load static %}
+<html>
+<title>ãÑÇã ÑÏÇÎÊ</title>
+
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-61">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="icon" type="image/png" href="images/icons/favicon.ico"/>
+    <link rel="stylesheet" type="text/css" href="{% static 'blog/css/uikit-rtl.css' %}" />
+<script src="{% static 'blog/js/uikit.min.js' %}" ></script>
+    <script src="{% static 'blog/js/uikit-icons.min.js' %}"  ></script>
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+    <link href="https://cdn.rawgit.com/rastikerdar/samim-font/v[X.Y.Z]/dist/font-face.css" rel="stylesheet" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="{% static 'blog/css/index_w3.css' %}" />
+    <link rel="stylesheet" type="text/css" href="{% static 'blog/css/index_w3-theme-black.css' %}" />
+    <link href='http://www.fontonline.ir/css/BMitra.css' rel='stylesheet' type='text/css'>
+    <!--<link rel="stylesheet" type="text/css" href= />-->
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+    <link href="https://cdn.rawgit.com/rastikerdar/samim-font/v[X.Y.Z]/dist/font-face.css" rel="stylesheet" type="text/css" />
+
+<link rel="icon" type="image/png" href="images/icons/favicon.ico"/>
+<link rel="stylesheet" href="css/index_w3.css">
+<link rel="stylesheet" href="css/index_w3-theme-black.css">
+
+<style>
+html,body,h1,h2,h3,h4,h5,h6 {font-family: "Roboto","B Nazanin", sans-serif;}
+.w3-sidebar {
+  z-index: 3;
+  width: 250px;
+  top: 43px;
+  bottom: 0;
+  height: inherit;
+}
+</style>
+<body>
+
+<!-- Navbar -->
+<div class="w3-top">
+  <div class="w3-bar w3-theme w3-top w3-left-align w3-large">
+    <a class="w3-bar-item w3-button w3-right w3-hide-large w3-hover-white w3-large w3-theme-l1" href="javascript:void(0)" onclick="w3_open()"><i class="fa fa-bars"></i></a>
+    <a href="index.html" class="w3-bar-item w3-button w3-theme-l1 w3-right">Logo</a>
+    <a href="#about" class="w3-bar-item w3-button w3-hide-small w3-hover-white w3-right">ÏÑÈÇÑå ãÇ</a>
+	<a href="#policy" class="w3-bar-item w3-button w3-hide-small w3-hover-white w3-right">ÞæÇäíä</a>
+    <a href="#service" class="w3-bar-item w3-button w3-hide-small w3-hover-white w3-right">ÎÏãÇÊ</a>
+	<a href="#nerkh" class="w3-bar-item w3-button w3-hide-small w3-hover-white w3-right">äÑÎ ÇÑãÒÏåÇ</a>
+	<a href="#nerkh-arz" class="w3-bar-item w3-button w3-hide-small w3-hover-white w3-right">äÑÎ áÍÙå Çí ÇÑÒ</a>
+	<a href="#contact" class="w3-bar-item w3-button w3-hide-small w3-hover-white w3-right">ÇÑÊÈÇØ ÈÇ ãÇ</a>
+
+    <!--<a href="login.html" class="w3-bar-item w3-button w3-hide-small w3-hover-green">æÑæÏ</a>
+	<a href="signup.html" class="w3-bar-item w3-button w3-hide-small w3-hover-green">ËÈÊ äÇã</a>
+    <!--<a href="#" class="w3-bar-item w3-button w3-hide-small w3-hide-medium w3-hover-white">Clients</a>
+    <a href="#" class="w3-bar-item w3-button w3-hide-small w3-hide-medium w3-hover-white">Partners</a>-->
+  </div>
+</div>
+
+<!-- Sidebar -->
+<nav class="w3-sidebar w3-bar-block w3-collapse w3-large w3-theme-l5 w3-animate-right" style="width:25%;right:0"  id="mySidebar">
+  <a href="javascript:void(0)" onclick="w3_close()" class="w3-right w3-xlarge w3-padding-large w3-hover-black w3-hide-large" title="Close Menu">
+    <i class="fa fa-remove"></i>
+  </a>
+  <h3 class="w3-bar-item"><b>ãíÒ ÇÑ ÔãÇ</b></h3>
+  <a class="w3-bar-item w3-button w3-hover-black" href="signup.html">ËÈÊ äÇã</a>
+  <a class="w3-bar-item w3-button w3-hover-black" href="login.html">æÑæÏ</a>
+</nav>
+
+<!-- Overlay effect when opening sidebar on small screens -->
+<div class="w3-overlay w3-hide-large" onclick="w3_close()" style="cursor:pointer" title="close side menu" id="myOverlay"></div>
+
+<!-- Main content: shift it to the right by 250 pixels when the sidebar is visible -->
+<div class="w3-main" style="margin-right:250px" dir="rtl">
+
+	<div id="about" class="w3-row w3-padding-64">
+		<div class="w3-third w3-container">
+		  <p class="w3-border w3-padding-large w3-padding-32 w3-center">AD</p>
+		  <p class="w3-border w3-padding-large w3-padding-64 w3-center">AD</p>
+		</div>
+		<div class="w3-twothird w3-container">
+		  <h1 class="w3-text-teal">ÏÑÈÇÑå ãÇ</h1>
+		  <p>.ÇÑ ÔÑÊ ãÑÇã ÑÏÇÎÊ ÏÑ ÓÇá 1396 æ Èå ÚäæÇä í Ñæå ÏÑÓí ÂÛÇÒ ÔÏ</br>
+		  Êíã ãÇ Èå ÚäæÇä í Ñæå ãÊÔá ÇÒ Óå ÏÇäÔÌæí ÝäÇæÑí ÇØáÇÚÇÊ ÏÇäÔÇå ÕäÚÊí ÔÑíÝ¡ ÇÑ ÎæÏ ÑÇ ÈÇ åÏÝ ÇíÌÇÏ í ÓÇãÇäå ÑÏÇÎÊ ÂäáÇíä ÇÑÒí ÈÑÇí ÊÓåíá ÎÏãÇÊ ÈÇäí æ ãÇáí ÂÛÇÒ ÑÏ</br>
+		  Êíã ãÑÇã ÑÏÇÎÊ í Ñæå ÈÇ ÇäÑí¡ ÎáÇÞ æ ÏÇÑÇí ÇíÏå åÇí ÈÑ ÇÓÊ å Çíä ÇãÑ ÏÑ äÇÑ ÇÔÊíÇÞ Èå íÇÏíÑí æ åãíäØæÑ ÏÇÑÇ ÈæÏä ãåÇÑÊ åÇí Çíå¡ ÇÒ ãÒÇíÇí Çíä Êíã ãÍÓæÈ ãí ÔæÏ</p>
+		</div>
+	</div>
+
+  <div id="policy" class="w3-row w3-padding-64">
+	<div class="w3-third w3-container">
+      <p class="w3-border w3-padding-large w3-padding-32 w3-center">AD</p>
+      <p class="w3-border w3-padding-large w3-padding-64 w3-center">AD</p>
+    </div>
+    <div class="w3-twothird w3-container">
+      <h1 class="w3-text-teal">ÞæÇäíä</h1>
+      <p>ÏÑ Çíä ÈÎÔ ÞæÇäíä ÓÇíÊ äæÔÊå ÔÏå
+	  <ul>
+		<li>ÞÇäæä Çæá</li>
+		<li>ÞÇäæä Ïæã</li>
+		<li>ÞÇäæä Óæã</li>
+	  </ul></p>
+    </div>
+  </div>
+
+  <div id="service" class="w3-row w3-padding-64">
+	<div class="w3-third w3-container">
+      <p class="w3-border w3-padding-large w3-padding-32 w3-center">AD</p>
+      <p class="w3-border w3-padding-large w3-padding-64 w3-center">AD</p>
+    </div>
+    <div class="w3-twothird w3-container">
+      <h1 class="w3-text-teal">ÎÏãÇÊ</h1>
+      <p style="text-align:right">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Lorem ipsum
+        dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+    </div>
+  </div>
+
+  <div id="nerkh" class="w3-row w3-padding-64">
+	<div class="w3-third w3-container">
+      <p class="w3-border w3-padding-large w3-padding-32 w3-center">AD</p>
+      <p class="w3-border w3-padding-large w3-padding-64 w3-center">AD</p>
+    </div>
+    <div class="w3-twothird w3-container">
+		<h1 class="w3-text-teal">äÑÎ ÇÑãÒÏåÇ</h1>
+		<p style="text-align:right">:äÑÎ ÇÑãÒÏåÇ Èå ÔÑÍ ÒíÑ ÇÓÊ</p>
+		<p style="text-align:right">((íå ÌÏæá å ÊæÔ ÇÑãÒÏ åÑ ÇÑ ÊÚÑíÝ ÔÏå))</p>
+    </div>
+  </div>
+
+  <div id="nerkh-arz" class="w3-row w3-padding-64">
+	<div class="w3-third w3-container">
+      <p class="w3-border w3-padding-large w3-padding-32 w3-center">AD</p>
+      <p class="w3-border w3-padding-large w3-padding-64 w3-center">AD</p>
+    </div>
+    <div class="w3-twothird w3-container" dir="rtl">
+		<h1 class="w3-text-teal">äÑÎ áÍÙå Çí ÇÑÒ</h1>
+		<p style="text-align:right">:äÑÎ äæäí ÇÑÒ Èå ÔÑÍ ÒíÑ ÇÓÊ</p>
+		<p style="text-align:right">((áíÈá äÑÎ åÑ ÏáÇÑ æ åÑ íæÑæ Èå ÑíÇá))</p>
+		<p style="text-align:right">ÈÑÇí ãÔÇåÏå ãÞÏÇÑ ÊÈÏíá ÔÏå Èå ÇÑÒ ãæÑÏ äÙÑ Ó ÇÒ ÓÑ ÇÑãÒÏ ÊÈÏíá¡ ãí ÊæÇäíÏ ÇÒ ÈÎÔ ÒíÑ ÇÓÊÝÇÏå äíÏ</p>
+				<!--<p style="text-align:right">ÈÑÇí ãÔÇåÏå ãÞÏÇÑ ÊÈÏíá ÔÏå Èå ÇÑÒ ãæÑÏ äÙÑ Ó ÇÒ ÓÑ ÇÑãÒÏ ÊÈÏíá¡ ãí ÊæÇäíÏ ÇÒ ÈÎÔ ÒíÑ ÇÓÊÝÇÏå äíÏ</p>-->
+		<div>
+		<form method="post" action="arz_convert"  >
+                {% csrf_token %}
+
+			<p>تبدیل از</p>
+			<select id="from" name = "from" >
+				<OPTION Value="rial">ریال</OPTION>
+				<OPTION Value="dollar">دلار</OPTION>
+				<OPTION Value="euro">یورو</OPTION>
+			</select>
+			<p>به</p>
+			<select id="to" name="to">
+				<OPTION Value="rial">ریال</OPTION>
+				<OPTION Value="dollar">دلار</OPTION>
+				<OPTION Value="euro">یورو</OPTION>
+			</select>
+			<p>مقدار مورد نظر: </p>
+			<input id="amount-from" name="amount-from" type="text" value=""/>
+
+            <input type="hidden"  name="d" value={{ dollar.قیمت }} >
+            <input type="hidden"  name="e" value={{ euro.قیمت }} >
+
+			<input id="change" type="submit" value="تبدیل"/>
+		</form>
+		<p>پاسخ:</p>
+		<label id="amount-to">{{answer}}</label>
+		</div>
+	</div>
+  </div>
+
+  <div id="contact" class="w3-row w3-padding-64">
+	<div id="map" style="width:230px;height:230px" class="w3-third w3-container"></div>
+    <div class="w3-twothird w3-container">
+      <h1 class="w3-text-teal">ÇÑÊÈÇØ ÈÇ ãÇ</h1>
+      <p style="text-align:right">ÂÏÑÓ: ÇíÑÇä¡ ÊåÑÇä¡ ÎíÇÈÇä ÂÒÇÏí¡ ÏÇäÔÇå ÕäÚÊí ÔÑíÝ¡ ÏÇäÔÏå ÇãíæÊÑ</br>
+	  ÔãÇÑå ÊãÇÓ: 0987654321</br></br></br>
+	  ÏÑ ÕæÑÊ ÊãÇíá ãí ÊæÇäíÏ ÈÇ ÇÓÊÝÇÏå ÇÒ ÝÑã ÒíÑ íÇã ÎæÏ ÑÇ ÇÑÓÇá äíÏ</br>
+	  </p>
+	  <form onsubmit="confirmInput()" >
+		<table style="text-align:right">
+			<tr>
+				<td><p>:äÇã</p></td>
+				<td><input id="name_box" type="text" value="" name="first_name" style="text-align:right"/></td>
+			</tr>
+			<tr>
+				<td><p>:*Çíãíá</p></td>
+				<td><input id="email_box" type="text" value="" name="email"/></td>
+			</tr>
+			<tr>
+				<td><p>:*íÇã</p></td>
+				<td><textarea id="message_box" name="message" rows="10" cols="40" style="text-align:right"></textarea></td>
+			</tr>
+			<tr>
+				<td></td>
+				<td dir="rtl"><input id="submit" type="submit" value="ÇÑÓÇá"/></td>
+			</tr>
+		</table>
+		</form>
+    </div>
+  </div>
+
+  <!-- Pagination -->
+  <!--
+  <div class="w3-center w3-padding-32">
+    <div class="w3-bar">
+      <a class="w3-button w3-black" href="#">1</a>
+      <a class="w3-button w3-hover-black" href="#">2</a>
+      <a class="w3-button w3-hover-black" href="#">3</a>
+      <a class="w3-button w3-hover-black" href="#">4</a>
+      <a class="w3-button w3-hover-black" href="#">5</a>
+      <a class="w3-button w3-hover-black" href="#">»</a>
+    </div>
+  </div>
+  -->
+
+  <footer id="myFooter">
+
+	<!--
+    <div class="w3-container w3-theme-l2 w3-padding-32">
+      <h4>Footer</h4>
+    </div>
+	-->
+
+    <div class="w3-container w3-theme-l1">
+      <p>ãÑÇã ÑÏÇÎÊ</p>
+    </div>
+  </footer>
+
+<!-- END MAIN -->
+</div>
+
+<script>
+// Get the Sidebar
+var mySidebar = document.getElementById("mySidebar");
+
+// Get the DIV with overlay effect
+var overlayBg = document.getElementById("myOverlay");
+
+// Toggle between showing and hiding the sidebar, and add overlay effect
+function w3_open() {
+    if (mySidebar.style.display === 'block') {
+        mySidebar.style.display = 'none';
+        overlayBg.style.display = "none";
+    } else {
+        mySidebar.style.display = 'block';
+        overlayBg.style.display = "block";
+    }
+}
+
+// Close the sidebar with the close button
+function w3_close() {
+    mySidebar.style.display = "none";
+    overlayBg.style.display = "none";
+}
+
+// Check if inputs are valid
+function confirmInput() {
+			emailbox = document.getElementById("email_box");
+			messagebox = document.getElementById("message_box");
+			if(emailbox.value==null || emailbox.value=="" || messagebox.value==null || messagebox.value==""){
+				alert("ÈÇíÏ ÊãÇã ÞÓãÊ åÇí * ÏÇÑ ÑÇ ÑäíÏ!");
+			}
+
+			var rea = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$/;
+			var x = rea.test(emailbox.value);
+			if (!x) {
+				alert('ÓÇÎÊÇÑ Çíãíá äÇãÚÊÈÑ ÇÓÊ!');
+			}
+		}
+
+// Open location on map
+function myMap() {
+    var mapOptions = {
+        center: new google.maps.LatLng(35.702513, 51.351243),
+        zoom: 15,
+        mapTypeId: google.maps.MapTypeId.HYBRID
+    }
+var map = new google.maps.Map(document.getElementById("map"), mapOptions);
+}
+</script>
+<script src="https://maps.googleapis.com/maps/api/js?callback=myMap"></script>
+
+</body>
+</html>

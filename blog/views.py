@@ -12,6 +12,8 @@ from blog.forms import NameForm, NameForm2, Nform, ChangePassWordForm, add_emplo
 # from blog.models import MyUser
 from blog.models import MyUser, Employee, Transaction
 
+def index(request):
+    return render (request , 'index.html' , {})
 
 def profile(request):
     f=NameForm()

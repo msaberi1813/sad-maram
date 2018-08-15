@@ -2,7 +2,7 @@ from django.conf.urls import url
 from django.urls import path
 from . import views
 urlpatterns = [
-    path('', views.profile, name='post_list'),#todo change to the homepage (should be in 3 part for each diffrent usr)
+    path('', views.index, name='index'),#todo change to the homepage (should be in 3 part for each diffrent usr)
     url(r'^upload_file$', views.upload_file, name='upload_file'),
     url(r'^profile$', views.profile, name='profile'),
     url(r'^edit$', views.edit, name='edit'),
